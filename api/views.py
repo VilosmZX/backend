@@ -22,6 +22,6 @@ def check(request: HttpRequest, id):
     try:
         user = UserReg.objects.get(id=id)
         user.delete()
-        return Response(status=200)
+        return Response('Jemaat Terdaftar!',status=200)
     except:
-        return Response(status=200)
+        return Response('Jemaat tidak terdaftar!',status=200)
