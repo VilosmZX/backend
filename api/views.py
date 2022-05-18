@@ -25,3 +25,32 @@ def check(request: HttpRequest, id):
         return Response('Jemaat Terdaftar!',status=200)
     except:
         return Response('Jemaat tidak terdaftar!',status=200)
+
+
+@api_view(['GET'])
+def check_available(request: HttpRequest):
+    totalAvailable = UserReg.objects.filter(jam='Jam 8').count()
+    totalAvailable = 16 - totalAvailable
+    
+    if totalAvailable <= 0:
+        return Response(0,status=HTTPStatus.BAD_REQUEST)
+    return Response({'data': totalAvailable} ,status=200)
+
+
+@api_view(['GET'])
+def check_available2(request: HttpRequest):
+    totalAvailable = UserReg.objects.filter(jam='Jam 10').count()
+    totalAvailable = 16 - totalAvailable
+    if totalAvailable <= 0:
+        return Response(0, status=HTTPStatus.BAD_REQUEST)
+    return Response({'data': totalAvailable}, status=200)
+
+
+@api_view(['GET'])
+def is_exists(request: HttpRequest, id):
+    try:
+        user = UserReg.objects.get(id=id)
+        return Response(status=200)
+    except:
+        return Response(status=HTTPStatus.NOT_FOUND)
+

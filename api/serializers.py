@@ -5,3 +5,5 @@ class UserRegSerializer(ModelSerializer):
     class Meta:
         model = UserReg
         fields = ['id', 'phone_number', 'jam','names']
+
+        
