@@ -30,7 +30,7 @@ def check(request: HttpRequest, id):
 @api_view(['GET'])
 def check_available(request: HttpRequest):
     totalAvailable = UserReg.objects.filter(jam='Jam 8').count()
-    totalAvailable = 16 - totalAvailable
+    totalAvailable = 17 - totalAvailable
     
     if totalAvailable <= 0:
         return Response(0,status=HTTPStatus.BAD_REQUEST)
@@ -40,7 +40,7 @@ def check_available(request: HttpRequest):
 @api_view(['GET'])
 def check_available2(request: HttpRequest):
     totalAvailable = UserReg.objects.filter(jam='Jam 10').count()
-    totalAvailable = 16 - totalAvailable
+    totalAvailable = 17 - totalAvailable
     if totalAvailable <= 0:
         return Response(0, status=HTTPStatus.BAD_REQUEST)
     return Response({'data': totalAvailable}, status=200)
